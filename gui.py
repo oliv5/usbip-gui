@@ -207,7 +207,11 @@ def parse_attached_list(text):
 	for i in range(0, len(lines)):
 		line = lines[i]
 		if line.__contains__("Port ") == True:
-			port = int( line.strip().split(":")[0].replace("Port ", "") )
+			port = line.strip().split(":")[0].replace("Port ", "")
+			try:
+				port = int( port )
+			except:
+				continue
 			info_line = lines[i+1]
 			busid_line = lines[i+2]
 			last_line = lines[i+3]
